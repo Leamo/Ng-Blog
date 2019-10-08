@@ -1,12 +1,18 @@
 <div class="row">
-    <div class="card w-100">
+    <div [ngClass]="{'card': true,
+                    'w-100': true,
+                    'border-success': loveIts > 0,
+                    'border-danger': loveIts < 0}">
             <div class="card-header text-right">{{ createdAt | date: 'short' }}</div>
-        <div class="card-body">
+        <div [ngClass]="{'card-body': true,
+                        'text-success': loveIts > 0,
+                        'text-danger': loveIts < 0}">
             <h5 class="card-title">{{ title }}</h5>
             <p class="card-text">{{ content }}</p>
-            <a href="#" class="btn btn-success">Love it !</a>
+            <button class="btn btn-success" (click)="like()">Love it !</button>
             &nbsp;
-            <a href="#" class="btn btn-danger">Don't love it !</a>
+            <button class="btn btn-danger" (click)="unlike()">Don't love it !</button>
+            <div style="float: right">❤ : {{ loveIts }}</div>
         </div>
     </div>
 </div>
